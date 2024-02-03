@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>given an array arr[] of size N the task is to find the sum of contiguous subarray within a arr[] with the largest sum Input:{-2,-3,4,-1,-2,1,5,-3}</h1>
+    <script>function maxSubArraySum(arr) {
+        let maxEndingHere = arr[0];
+        let maxSoFar = arr[0];
+    
+        for (let i = 1; i < arr.length; i++) {
+            maxEndingHere = Math.max(arr[i], maxEndingHere + arr[i]);
+            maxSoFar = Math.max(maxSoFar, maxEndingHere);
+        }
+    
+        return maxSoFar;
+    }
+    
+    // Input
+    const arr = [-2, -3, 4, -1, -2, 1, 5, -3];
+    console.log(maxSubArraySum(arr)); // Output: 7 (the subarray is [4, -1, -2, 1, 5])
+    </script>
+</body>
+</html>

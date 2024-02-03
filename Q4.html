@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>given an array of N integers and an integer k, the task is to find the number of pairs of integers in the array whose sum is equal to k  Input:arr[] = {1,5,7,-1},k=6</h1>
+    <script>
+        function countPairsWithSum(arr, k) {
+    const numFrequency = {};
+    let count = 0;
+
+    for (const num of arr) {
+        if (numFrequency[num] === undefined) {
+            numFrequency[num] = 1;
+        } else {
+            numFrequency[num]++;
+        }
+    }
+
+    for (const num of arr) {
+        const complement = k - num;
+        if (numFrequency[complement] !== undefined) {
+            count += numFrequency[complement];
+        }
+
+        if (complement === num) {
+            count--;
+        }
+    }
+
+    return count / 2;
+}
+// Input
+const arr = [1, 5, 7, -1];
+const k = 6;
+console.log(countPairsWithSum(arr, k));
+
+    </script>
+</body>
+</html>

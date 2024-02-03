@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        Given a string,find the length of the longest substring without repeating characters.
+        Input:"ABCDEFGABEF"
+    </h1>
+    <script>
+           function norepeat(str) {
+             let maxLength = 0, start = 0, charIndexMap = {};
+             for (let end = 0; end < str.length; end++) {
+              const currentChar = str[end];
+              start = Math.max(start, (charIndexMap[currentChar] || 0) + 1);
+              charIndexMap[currentChar] = end;
+              maxLength = Math.max(maxLength, end - start + 1);
+                 }
+               return maxLength;
+            }
+
+       // Input
+        const str = "ABCDEFGABEF";
+       console.log(norepeat(str)); // Output: 7
+
+    </script>
+</body>
+</html>
